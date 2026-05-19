@@ -18,13 +18,26 @@ class Cliente(Persona):
         super().capturardatos()
         self.sexo = input("Sexo: ")
         self.CURP = input("Curp: ")
-        self.telefono = int(input("Telefono: "))
+        while True:
+            listacliente = archivo_clientes.leerDatos()
+            for renglon in listacliente:
+                datos = renglon.split(",")
+                if datos[5].strip() == self.CURP:
+                    print("Error: La CURP ya existe")
+                    self.CURP = input("Curp: ")
+                    break
+            else:
+                break
+        self.telefono = (input("Telefono: "))
+        while len(self.telefono) != 10:
+            print("Error: El telefono debe tener 10 digitos")
+            self.telefono = (input("Telefono: "))
         self.correo = input("Correo: ")
         self.ocupacion = input("Ocupacion: ")
         self.ingreso_mensual = int(input("Ingresos: "))
 
     def devolverdatos(self):
-        return super().devolverdatos() + f",{self.sexo}, {self.CURP}, {self.telefono}, {self.correo}, {self.ocupacion}, {self.ingreso_mensual}"
+        return super().devolverdatos() + f",{self.sexo},{self.CURP},{self.telefono},{self.correo},{self.ocupacion},{self.ingreso_mensual}"
 
 def agregar_cliente():
     ocliente = Cliente()

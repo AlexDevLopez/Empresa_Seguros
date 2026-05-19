@@ -1,4 +1,3 @@
-from ClassPoliza import Poliza
 from ClassTransaccion import Transaccion
 from ClassArchivos import archivo_pagos
 class Pagos(Transaccion):

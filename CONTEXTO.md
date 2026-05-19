@@ -53,12 +53,12 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [x] **Migrar `Siniestro` para heredar de `Transaccion`**
 - [x] Implementar `procesar()` en `Siniestro` — valida monto_aprobado ≤ monto_reclamado
 
-### ⬜ Fase 3 — Validaciones (PENDIENTE)
-- [ ] Validar `monto_aprobado ≤ monto_reclamado` en siniestros
-- [ ] Validar `fecha_inicio < fecha_fin` en pólizas
-- [ ] Validar `fecha_ocurrencia ≤ fecha_reporte` en siniestros
-- [ ] Validar CURP única al registrar cliente
-- [ ] Validar porcentaje beneficiarios = 100%
+### ✅ Fase 3 — Validaciones (COMPLETADA)
+- [x] Validar `monto_aprobado ≤ monto_reclamado` en siniestros
+- [x] Validar `fecha_inicio < fecha_fin` en pólizas
+- [x] Validar `fecha_ocurrencia ≤ fecha_reporte` en siniestros
+- [x] Validar CURP única al registrar cliente
+- [x] Validar porcentaje beneficiarios = 100%
 
 ### ⬜ Fase 4 — Refactorización (PENDIENTE)
 - [ ] Crear funciones genéricas de CRUD (eliminar código duplicado)
