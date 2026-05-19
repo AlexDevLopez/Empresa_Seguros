@@ -71,6 +71,3 @@ def borrar_pagos():
             print("Pago eliminado con éxito")
     except ValueError:
         print("¡Error! Debe ingresar un pago existente y el formato correcto.")
-
-o = Pagos()
-o.procesar()

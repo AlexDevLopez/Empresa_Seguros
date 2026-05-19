@@ -32,7 +32,7 @@ class Poliza(Aseguradora):
         self.estatus = input("Estatus: ")
         self.id_cliente = int(input("¿A qué ID de cliente pertenece esta póliza?: "))
     def devolverdatos(self):
-        return f"{self.numero_poliza}, {self.fecha_inicio}, {self.fecha_fin}, {self.prima_mensual}, {self.suma_asegurada}, {self.tipo_poliza}, {self.estatus}, {self.id_cliente}"
+        return f"{self.numero_poliza}, {self.fecha_inicio.strftime('%d/%m/%Y')}, {self.fecha_fin.https://github.com/AlexDevLopez/Empresa_Seguros.git}, {self.prima_mensual}, {self.suma_asegurada}, {self.tipo_poliza}, {self.estatus}, {self.id_cliente}"
 
 def agregar_poliza():
     opoliza = Poliza()

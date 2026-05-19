@@ -34,7 +34,7 @@ class Siniestro(Transaccion):
         self.id_poliza = int(input("¿A qué número de póliza pertenece?"))
 
     def devolverdatos(self):
-        return f"{self.fecha_reporte}, {self.fecha_ocurrencia}, {self.tipo_siniestro}, {self.monto_reclamado}, {self.monto_aprobado}, {self.estatus_siniestro}, {self.id_poliza}"
+        return f"{self.id}, {self.fecha_reporte.strftime('%d/%m/%Y')}, {self.fecha_ocurrencia.strftime('%d/%m/%Y')}, {self.tipo_siniestro}, {self.monto_reclamado}, {self.monto_aprobado}, {self.estatus_siniestro}, {self.id_poliza}"
 
     def procesar(self):
         if self.monto_reclamado <= 0:
