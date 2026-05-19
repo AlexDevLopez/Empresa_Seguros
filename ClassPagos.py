@@ -22,13 +22,14 @@ class Pagos(Transaccion):
         return f"{self.fecha_pago}, {self.monto_pagado}, {self.metodo_pago}, {self.referencia}, {self.id_poliza}"
 
     def procesar(self):
-        monto = self.monto_pagado
-        try:
-            monto > 0
-            self.id_poliza> 0
-            print("Pago realizado con exito")
-        except ValueError:
-            print("El monto es negativo")
+        if self.monto_pagado <= 0:
+            print("Error: El monto debe ser mayor a 0")
+            return False
+        if int(self.id_poliza) <= 0:
+            print("Error: Debe indicar una póliza válida")
+            return False
+        print("Pago procesado con éxito")
+        return True
 
 def agregar_pago():
     opago = Pagos()

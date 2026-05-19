@@ -1,6 +1,6 @@
-from ClassAseguradora import Aseguradora
+from ClassTransaccion import Transaccion
 from ClassArchivos import archivo_siniestro
-class Siniestro(Aseguradora):
+class Siniestro(Transaccion):
 
     def __init__(self):
         self.id = 0
@@ -24,6 +24,19 @@ class Siniestro(Aseguradora):
 
     def devolverdatos(self):
         return f"{self.fecha_reporte}, {self.fecha_ocurrencia}, {self.tipo_siniestro}, {self.monto_reclamado}, {self.monto_aprobado}, {self.estatus_siniestro}, {self.id_poliza}"
+
+    def procesar(self):
+        if self.monto_reclamado <= 0:
+            print("Error: El monto reclamado debe ser mayor a 0")
+            return False
+        if self.monto_aprobado > self.monto_reclamado:
+            print("Error: El monto aprobado no puede ser mayor al reclamado")
+            return False
+        if self.monto_aprobado < 0:
+            print("Error: El monto aprobado no puede ser negativo")
+            return False
+        print("Siniestro procesado con éxito")
+        return True
 
 def agregar_siniestro():
     osiniestro = Siniestro()

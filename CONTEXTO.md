@@ -46,12 +46,12 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [x] Hacer `Persona` abstracta con ABC
 - [x] Verificar que el sistema sigue funcionando
 
-### 🔄 Fase 2 — Abstracción (EN PROGRESO)
+### ✅ Fase 2 — Abstracción (COMPLETADA)
 - [x] Crear clase abstracta `Transaccion` con `procesar()`
 - [x] Migrar `Pagos` para heredar de `Transaccion`
-- [ ] **Arreglar bug en `procesar()` de Pagos** — usa `print() + string` que da TypeError
-- [ ] **Migrar `Siniestro` para heredar de `Transaccion`**
-- [ ] Implementar `procesar()` en `Siniestro`
+- [x] **Arreglar bug en `procesar()` de Pagos** — corregido: ahora usa if/else y retorna True/False
+- [x] **Migrar `Siniestro` para heredar de `Transaccion`**
+- [x] Implementar `procesar()` en `Siniestro` — valida monto_aprobado ≤ monto_reclamado
 
 ### ⬜ Fase 3 — Validaciones (PENDIENTE)
 - [ ] Validar `monto_aprobado ≤ monto_reclamado` en siniestros
@@ -77,8 +77,8 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [ ] Documento de refactorización antes/después
 
 ## Bugs conocidos
-1. `ClassPagos.py` línea 24: `procesar()` hace `print() + string` → TypeError
-2. `ClassSiniestros.py`: todavía hereda de `Aseguradora` en vez de `Transaccion`
+1. ~~`ClassPagos.py` línea 24: `procesar()` hace `print() + string` → TypeError~~ ✅ CORREGIDO
+2. ~~`ClassSiniestros.py`: todavía hereda de `Aseguradora` en vez de `Transaccion`~~ ✅ CORREGIDO
 3. El `self.id += 1` en las clases siempre da 1 (el ID real lo pone `ArchivosCSV`)
 
 ## Cómo pedirle contexto a la IA en otra compu
