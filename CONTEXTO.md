@@ -14,8 +14,8 @@ Aseguradora (ABC) ← ClassAseguradora.py
 │   └── Beneficiario ← ClassBeneficiarios.py
 ├── Poliza ← ClassPoliza.py
 └── Transaccion (abstracta) ← ClassTransaccion.py
-    ├── Pagos ← ClassPagos.py  ✅ Ya hereda de Transaccion
-    └── Siniestro ← ClassSiniestros.py  ⚠️ PENDIENTE: migrar a Transaccion
+    ├── Pagos ← ClassPagos.py  ✅ Hereda de Transaccion
+    └── Siniestro ← ClassSiniestros.py  ✅ Hereda de Transaccion
 ```
 
 ## Archivos del proyecto
@@ -26,12 +26,12 @@ Aseguradora (ABC) ← ClassAseguradora.py
 | `SubMenus.py` | Submenús CRUD para cada entidad |
 | `ClassAseguradora.py` | Clase abstracta raíz (ABC) con `capturardatos()` y `devolverdatos()` |
 | `ClassPersona.py` | Clase abstracta intermedia (nombre, apellidos, fecha_nacimiento) |
-| `ClassCliente.py` | Cliente con CURP, teléfono, correo, etc. + funciones CRUD |
-| `ClassBeneficiarios.py` | Beneficiario con parentesco, porcentaje + funciones CRUD |
-| `ClassPoliza.py` | Póliza con fechas, prima, suma asegurada + funciones CRUD |
+| `ClassCliente.py` | Cliente con CURP, teléfono, correo, etc. + funciones CRUD + validación CURP única |
+| `ClassBeneficiarios.py` | Beneficiario con parentesco, porcentaje + funciones CRUD + validación % ≤ 100 |
+| `ClassPoliza.py` | Póliza con fechas, prima, suma asegurada + funciones CRUD + validación fechas |
 | `ClassTransaccion.py` | Clase abstracta con método `procesar()` |
-| `ClassPagos.py` | Pago con monto, método, referencia + funciones CRUD |
-| `ClassSiniestros.py` | Siniestro con montos, fechas, tipo + funciones CRUD |
+| `ClassPagos.py` | Pago con monto, método, referencia + funciones CRUD + `procesar()` |
+| `ClassSiniestros.py` | Siniestro con montos, fechas, tipo + funciones CRUD + `procesar()` + validaciones |
 | `ClassArchivos.py` | Persistencia en CSV (agregar, leer, modificar, eliminar) |
 
 ## Persistencia actual
@@ -54,13 +54,15 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [x] Implementar `procesar()` en `Siniestro` — valida monto_aprobado ≤ monto_reclamado
 
 ### ✅ Fase 3 — Validaciones (COMPLETADA)
-- [x] Validar `monto_aprobado ≤ monto_reclamado` en siniestros
-- [x] Validar `fecha_inicio < fecha_fin` en pólizas
-- [x] Validar `fecha_ocurrencia ≤ fecha_reporte` en siniestros
-- [x] Validar CURP única al registrar cliente
-- [x] Validar porcentaje beneficiarios = 100%
+- [x] Validar `monto_aprobado ≤ monto_reclamado` en siniestros (while loop en capturardatos)
+- [x] Validar `fecha_inicio < fecha_fin` en pólizas (usa `datetime.strptime` con formato DD/MM/YYYY)
+- [x] Validar `fecha_ocurrencia ≤ fecha_reporte` en siniestros (usa `datetime.strptime`)
+- [x] Validar CURP única al registrar cliente (lee CSV existente con `for/else` + `while True`)
+- [x] Validar porcentaje beneficiarios ≤ 100% por póliza (suma porcentajes existentes del CSV)
+- [x] Extra: validación de teléfono 10 dígitos en cliente
+- [x] Extra: validación de que la póliza exista al registrar beneficiario
 
-### ⬜ Fase 4 — Refactorización (PENDIENTE)
+### 🔄 Fase 4 — Refactorización (SIGUIENTE)
 - [ ] Crear funciones genéricas de CRUD (eliminar código duplicado)
 - [ ] Unificar submenús en un menú genérico
 - [ ] Limpiar nombres y código muerto
@@ -80,6 +82,21 @@ Aseguradora (ABC) ← ClassAseguradora.py
 1. ~~`ClassPagos.py` línea 24: `procesar()` hace `print() + string` → TypeError~~ ✅ CORREGIDO
 2. ~~`ClassSiniestros.py`: todavía hereda de `Aseguradora` en vez de `Transaccion`~~ ✅ CORREGIDO
 3. El `self.id += 1` en las clases siempre da 1 (el ID real lo pone `ArchivosCSV`)
+4. Las fechas en Póliza y Siniestro se guardan como `datetime` en el CSV (formato largo `2026-01-15 00:00:00`). Pendiente formatear con `strftime()` en `devolverdatos()`.
+
+## Notas para Fase 4 — Código duplicado a eliminar
+Cada clase (Cliente, Poliza, Pagos, Siniestros, Beneficiarios) repite el mismo patrón CRUD:
+- `agregar_X()` → crea objeto, captura datos, agrega al CSV
+- `listar_X()` → lee CSV, split, imprime campos uno por uno
+- `modificar_X()` → lista, pide número, captura, modifica
+- `borrar_X()` → lista, pide número, elimina
+
+Todo esto se podría unificar en funciones genéricas que reciban la clase y el archivo como parámetros.
+Lo mismo con `SubMenus.py` — los 5 submenús son casi idénticos.
+
+## Preferencia de enseñanza
+El usuario prefiere que la IA lo **guíe paso a paso con pistas**, no que escriba el código por él.
+Darle preguntas para pensar, señalar errores lógicos, y dejar que él implemente las soluciones.
 
 ## Cómo pedirle contexto a la IA en otra compu
 Cuando abras el proyecto en otra computadora, dile a la IA:
