@@ -1,0 +1,36 @@
+
+De cada cliente se desean guardar 10 datos ùnicos
+
+La póliza se relaciona con el cliente, ya que cada cliente
+puede tener 1 o varias pólizas pero cada Póliza solo puede pertenecer
+a un solo cliente.
+
+Cada póliza puede tener uno o varios beneficiarios, donde 
+se van a guardar 6 datos unicos de esta clase. Además, es un
+beneficiario por póliza.
+
+Ahora, tenemos el apartado pagos. Donde se registran 5 datos únicos
+de la clase, mientras tanto, cada pago solo puede corresponder
+a una sola póliza pero una póliza puede tener muchos pagos.
+
+POr último, de cada siniestro se registran 7 datos únicos. Ahora,
+cada siniestro corresponde a una sola póliza y una póliza puede
+tener cero, uno o varios siniestros.
+
+
+Cliente 1:M Poliza
+
+Poliza 1:1 Cliente
+
+Poliza 1:M Beneficiario
+
+Beneficiario 1:1 Poliza
+
+Pagos 1:1 Poliza
+
+Poliza 1:M Pagos
+
+Siniestros 1:1 Poliza
+
+Poliza 1:M Siniestros
+
