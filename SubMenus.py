@@ -1,12 +1,14 @@
-from ClassCliente import agregar_cliente,listar_cliente,modificar_cliente,borrar_cliente
-from ClassPoliza import agregar_poliza,listar_poliza,borrar_poliza,modificar_poliza
-from ClassBeneficiarios import agregar_beneficiario,listar_beneficiario,modificar_beneficiario,borrar_beneficiario
-from ClassPagos import agregar_pago,listar_pago,modificar_pago,borrar_pagos
-from ClassSiniestros import agregar_siniestro,listar_siniestro,modificar_siniestro,borrar_siniestro
+from ClassPoliza import Poliza
+from ClassBeneficiarios import Beneficiario
+from ClassPagos import Pagos
+from ClassSiniestros import Siniestro
+from ClassCliente import Cliente
+from ClassArchivos import archivo_clientes,archivo_poliza,archivo_beneficiarios,archivo_pagos,archivo_siniestro
+from CRUDGenerico import Agregar_generico,Listar_generico,Modificar_generico,Borrar_generico
 
 # Refactorización
 
-def menu_generico(titulo, fn_agregar, fn_listar, fn_modificar, fn_borrar):
+def menu_generico(titulo, Clase, archivo, nombre):
     while True:
         print(f"\n--- Menú {titulo} ---")
         print("1. ➕ Agregar")
@@ -19,13 +21,13 @@ def menu_generico(titulo, fn_agregar, fn_listar, fn_modificar, fn_borrar):
             opcion = int(input("Elige una opción: "))
 
             if opcion == 1:
-                fn_agregar()
+                Agregar_generico(Clase,archivo,nombre)
             elif opcion == 2:
-                fn_listar()
+                Listar_generico(archivo,nombre)
             elif opcion == 3:
-                fn_modificar()
+                Modificar_generico(Clase,archivo,nombre)
             elif opcion == 4:
-                fn_borrar()
+                Borrar_generico(archivo,nombre)
             elif opcion == 5:
                 break
             else:
@@ -35,51 +37,26 @@ def menu_generico(titulo, fn_agregar, fn_listar, fn_modificar, fn_borrar):
 
 def menu_Clientes():
     menu_generico(
-        "Clientes",
-        agregar_cliente,
-        listar_cliente,
-        modificar_cliente,
-        borrar_cliente,
-        "Clientes"
+        "Clientes", Cliente, archivo_clientes, "Cliente"
     )
 
 def menu_Poliza():
     menu_generico(
-        "Pólizas",
-        agregar_poliza,
-        listar_poliza,
-        modificar_poliza,
-        borrar_poliza,
-        "Pólizas"
+        "Pólizas", Poliza, archivo_poliza, "Póliza"
     )
 
 def menu_Beneficiarios():
     menu_generico(
-        "Beneficiarios",
-        agregar_beneficiario,
-        listar_beneficiario,
-        modificar_beneficiario,
-        borrar_beneficiario,
-        "Beneficiarios"
+        "Beneficiarios", Beneficiario, archivo_beneficiarios, "Beneficiario"
     )
 
 def menu_Pagos():
     menu_generico(
-        "Pagos",
-        agregar_pago,
-        listar_pago,
-        modificar_pago,
-        borrar_pagos,
-        "Pagos"
+        "Pagos", Pagos, archivo_pagos, "Pago"
     )
 
 def menu_Siniestros():
     menu_generico(
-        "Siniestros",
-        agregar_siniestro,
-        listar_siniestro,
-        modificar_siniestro,
-        borrar_siniestro,
-        "Siniestros"
+        "Siniestros", Siniestro, archivo_siniestro, "Siniestro"
     )
 
