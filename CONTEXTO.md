@@ -82,7 +82,7 @@ Aseguradora (ABC) ← ClassAseguradora.py
 1. ~~`ClassPagos.py` línea 24: `procesar()` hace `print() + string` → TypeError~~ ✅ CORREGIDO
 2. ~~`ClassSiniestros.py`: todavía hereda de `Aseguradora` en vez de `Transaccion`~~ ✅ CORREGIDO
 3. El `self.id += 1` en las clases siempre da 1 (el ID real lo pone `ArchivosCSV`)
-4. Las fechas en Póliza y Siniestro se guardan como `datetime` en el CSV (formato largo `2026-01-15 00:00:00`). Pendiente formatear con `strftime()` en `devolverdatos()`.
+4. ~~Las fechas en Póliza y Siniestro se guardan como `datetime` en el CSV (formato largo `2026-01-15 00:00:00`). Pendiente formatear con `strftime()` en `devolverdatos()`~~ ✅ CORREGIDO
 
 ## Notas para Fase 4 — Código duplicado a eliminar
 Cada clase (Cliente, Poliza, Pagos, Siniestros, Beneficiarios) repite el mismo patrón CRUD:

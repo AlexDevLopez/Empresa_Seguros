@@ -9,8 +9,7 @@ class ArchivosCSV:
         
         if not os.path.exists(archivo):
             self.__reiniciarArchivo__()
-
-    
+           
     def leerDatos(self):
         datos = []
         try:
@@ -21,6 +20,9 @@ class ArchivosCSV:
         except FileNotFoundError:
             return datos
         return datos
+    
+    def devolverencabezados(self):
+        return self.encabezado.split(",")
 
     def agregar(self, dato):
         datos = self.leerDatos()
@@ -71,6 +73,9 @@ class ArchivosCSV:
     def __reiniciarArchivo__(self):
         with open(self.archivo, "w") as a:
             a.write(self.encabezado + "\n")
+
+    
+    
 
 
 carpeta_script = os.path.dirname(os.path.abspath(__file__))
