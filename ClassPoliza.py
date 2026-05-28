@@ -1,6 +1,5 @@
 from datetime import datetime
 from ClassAseguradora import Aseguradora
-from ClassArchivos import archivo_poliza
 class Poliza(Aseguradora):
 
     def __init__(self):
@@ -32,4 +31,4 @@ class Poliza(Aseguradora):
         self.estatus = input("Estatus: ")
         self.id_cliente = int(input("¿A qué ID de cliente pertenece esta póliza?: "))
     def devolverdatos(self):
-        return f"{self.numero_poliza}, {self.fecha_inicio}, {self.fecha_fin}, {self.prima_mensual}, {self.suma_asegurada}, {self.tipo_poliza}, {self.estatus}, {self.id_cliente}"
+        return f"{self.numero_poliza}, {self.fecha_inicio.strftime('%Y-%m-%d')}, {self.fecha_fin.strftime('%Y-%m-%d')}, {self.prima_mensual}, {self.suma_asegurada}, {self.tipo_poliza}, {self.estatus}, {self.id_cliente}"

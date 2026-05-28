@@ -29,10 +29,13 @@ def Modificar_generico(clase, archivo, nombre):
             exito = archivo.modificar(num, clase_modificada.devolverdatos())
             if exito:
                 print(f"{nombre} modificado con éxito")
+                return True
         except ValueError:
             print(f"¡Error! Debe ingresar un {nombre} existente y el formato correcto.")
+            return False
         except Exception as e:
-            print(f"Error inesperado: {e}")    
+            print(f"Error inesperado: {e}")
+            return False    
     else:
         print(f"No hay {nombre}s registrados")    
         
@@ -43,10 +46,13 @@ def Borrar_generico(archivo, nombre):
             exito = archivo.eliminar(num)
             if exito:
                 print(f"{nombre} eliminado con éxito.")
+                return True
         except ValueError:
             print(f"¡Error! Debe ingresar un {nombre} existente y el formato correcto.")
+            return False
         except Exception as e:
-            print(f"Error inesperado: {e}")    
+            print(f"Error inesperado: {e}")   
+            return False 
     else:
         pass  
     

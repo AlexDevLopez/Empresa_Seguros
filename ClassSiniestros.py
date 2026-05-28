@@ -1,6 +1,5 @@
 from datetime import datetime
 from ClassTransaccion import Transaccion
-from ClassArchivos import archivo_siniestro
 class Siniestro(Transaccion):
 
     def __init__(self):
@@ -34,7 +33,7 @@ class Siniestro(Transaccion):
         self.id_poliza = int(input("¿A qué número de póliza pertenece?"))
 
     def devolverdatos(self):
-        return f"{self.fecha_reporte}, {self.fecha_ocurrencia}, {self.tipo_siniestro}, {self.monto_reclamado}, {self.monto_aprobado}, {self.estatus_siniestro}, {self.id_poliza}"
+        return f"{self.fecha_reporte.strftime('%Y-%m-%d')}, {self.fecha_ocurrencia.strftime('%Y-%m-%d')}, {self.tipo_siniestro}, {self.monto_reclamado}, {self.monto_aprobado}, {self.estatus_siniestro}, {self.id_poliza}"
 
     def procesar(self):
         if self.monto_reclamado <= 0:

@@ -3,7 +3,7 @@ from ClassBeneficiarios import Beneficiario
 from ClassPagos import Pagos
 from ClassSiniestros import Siniestro
 from ClassCliente import Cliente
-from ClassArchivos import archivo_clientes,archivo_poliza,archivo_beneficiarios,archivo_pagos,archivo_siniestro
+from ClassMySql import archivo_clientes,archivo_poliza,archivo_beneficiarios,archivo_pagos,archivo_siniestro
 from CRUDGenerico import Agregar_generico,Listar_generico,Modificar_generico,Borrar_generico
 
 # Refactorización
