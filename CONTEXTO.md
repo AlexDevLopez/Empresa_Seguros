@@ -62,16 +62,16 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [x] Extra: validación de teléfono 10 dígitos en cliente
 - [x] Extra: validación de que la póliza exista al registrar beneficiario
 
-### 🔄 Fase 4 — Refactorización (SIGUIENTE)
-- [ ] Crear funciones genéricas de CRUD (eliminar código duplicado)
-- [ ] Unificar submenús en un menú genérico
-- [ ] Limpiar nombres y código muerto
+### ✅ Fase 4 — Refactorización (COMPLETADA)
+- [x] Crear funciones genéricas de CRUD (eliminar código duplicado)
+- [x] Unificar submenús en un menú genérico
+- [x] Limpiar nombres y código muerto
 
-### ⬜ Fase 5 — MySQL con Laragon (PENDIENTE)
-- [ ] Diseñar tablas SQL con catálogos normalizados
-- [ ] Escribir script `.sql` de creación de BD
-- [ ] Crear clase de conexión a MySQL
-- [ ] Reemplazar operaciones CSV por MySQL
+### ✅ Fase 5 — MySQL con Laragon (COMPLETADA)
+- [x] Diseñar tablas SQL con catálogos normalizados
+- [x] Escribir script `.sql` de creación de BD
+- [x] Crear clase de conexión a MySQL
+- [x] Reemplazar operaciones CSV por MySQL
 
 ### ⬜ Fase 6 — Entregables (PENDIENTE)
 - [ ] Diagrama de clases UML

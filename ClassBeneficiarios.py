@@ -24,7 +24,7 @@ class Beneficiario(Persona):
             listapoliza = archivo_poliza.leerDatos()
             for renglon in listapoliza:
                 datos = renglon.split(",")
-                if datos[6].strip() == str(self.id_poliza):
+                if datos[1].strip() == str(self.id_poliza):
                     break
             else:
                 print("Error: La póliza no existe")
