@@ -32,12 +32,20 @@ Aseguradora (ABC) ← ClassAseguradora.py
 | `ClassTransaccion.py` | Clase abstracta con método `procesar()` |
 | `ClassPagos.py` | Pago con monto, método, referencia + funciones CRUD + `procesar()` |
 | `ClassSiniestros.py` | Siniestro con montos, fechas, tipo + funciones CRUD + `procesar()` + validaciones |
-| `ClassArchivos.py` | Persistencia en CSV (agregar, leer, modificar, eliminar) |
+| `ClassArchivos.py` | Persistencia en CSV (legacy, ya no se usa en producción) |
+| `ClassMySql.py` | Persistencia en MySQL (reemplaza CSV con misma interfaz) |
+| `MySqlConnection.py` | Conexión robusta a MySQL con try/except/finally |
+| `CRUDGenerico.py` | Funciones genéricas: Agregar, Listar, Modificar, Borrar |
+| `aeguradora.sql` | Script SQL para crear la base de datos y tablas |
+| `DiagramaUML.md` | Diagrama de clases UML (Mermaid) |
+| `Refactorizacion.md` | Documento de refactorización antes/después |
+| `test_mysql.py` | Tests automatizados CRUD (20/20 OK) |
 
 ## Persistencia actual
-- Archivos CSV en la carpeta `Datos(Aseguradora)/`
-- Clase `ArchivosCSV` maneja todo el CRUD de archivos
-- **PENDIENTE:** Migrar a MySQL (Laragon)
+- **MySQL** (base de datos `aseguradora` en Laragon)
+- Clase `ArchivosMySql` maneja todo el CRUD con misma interfaz que `ArchivosCSV`
+- Clase `ConexionMySQL` gestiona conexiones con rollback ante errores
+- ✅ Migración completada — solo se cambió 1 línea de import en `SubMenus.py`
 
 ## Estado del plan de implementación
 
@@ -73,10 +81,10 @@ Aseguradora (ABC) ← ClassAseguradora.py
 - [x] Crear clase de conexión a MySQL
 - [x] Reemplazar operaciones CSV por MySQL
 
-### ⬜ Fase 6 — Entregables (PENDIENTE)
-- [ ] Diagrama de clases UML
-- [ ] Script SQL entregable
-- [ ] Documento de refactorización antes/después
+### ✅ Fase 6 — Entregables (COMPLETADA)
+- [x] Diagrama de clases UML → `DiagramaUML.md`
+- [x] Script SQL entregable → `aeguradora.sql`
+- [x] Documento de refactorización antes/después → `Refactorizacion.md`
 
 ## Bugs conocidos
 1. ~~`ClassPagos.py` línea 24: `procesar()` hace `print() + string` → TypeError~~ ✅ CORREGIDO
@@ -84,15 +92,9 @@ Aseguradora (ABC) ← ClassAseguradora.py
 3. El `self.id += 1` en las clases siempre da 1 (el ID real lo pone `ArchivosCSV`)
 4. ~~Las fechas en Póliza y Siniestro se guardan como `datetime` en el CSV (formato largo `2026-01-15 00:00:00`). Pendiente formatear con `strftime()` en `devolverdatos()`~~ ✅ CORREGIDO
 
-## Notas para Fase 4 — Código duplicado a eliminar
-Cada clase (Cliente, Poliza, Pagos, Siniestros, Beneficiarios) repite el mismo patrón CRUD:
-- `agregar_X()` → crea objeto, captura datos, agrega al CSV
-- `listar_X()` → lee CSV, split, imprime campos uno por uno
-- `modificar_X()` → lista, pide número, captura, modifica
-- `borrar_X()` → lista, pide número, elimina
-
-Todo esto se podría unificar en funciones genéricas que reciban la clase y el archivo como parámetros.
-Lo mismo con `SubMenus.py` — los 5 submenús son casi idénticos.
+## Notas para Fase 4 — ✅ RESUELTO
+El código duplicado fue eliminado con `CRUDGenerico.py` (4 funciones genéricas) y `menu_generico()` en SubMenus.py.
+Ver `Refactorizacion.md` para detalles completos del antes/después.
 
 ## Preferencia de enseñanza
 El usuario prefiere que la IA lo **guíe paso a paso con pistas**, no que escriba el código por él.
