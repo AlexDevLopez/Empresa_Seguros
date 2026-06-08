@@ -1,8 +1,8 @@
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-from ClassMySql import archivo_clientes, archivo_poliza, archivo_beneficiarios, archivo_pagos, archivo_siniestro
-from MySqlConnection import db
+from bd.ClassMySql import archivo_clientes, archivo_poliza, archivo_beneficiarios, archivo_pagos, archivo_siniestro
+from bd.MySqlConnection import db
 
 # Limpiar TODAS las tablas (orden por foreign keys)
 db.ejecutar("DELETE FROM siniestros")

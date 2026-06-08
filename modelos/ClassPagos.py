@@ -1,4 +1,4 @@
-from ClassTransaccion import Transaccion
+from modelos.ClassTransaccion import Transaccion
 from datetime import datetime
 class Pagos(Transaccion):
 

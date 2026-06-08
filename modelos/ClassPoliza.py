@@ -1,5 +1,5 @@
 from datetime import datetime
-from ClassAseguradora import Aseguradora
+from modelos.ClassAseguradora import Aseguradora
 class Poliza(Aseguradora):
 
     def __init__(self):

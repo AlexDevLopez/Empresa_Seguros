@@ -1,5 +1,5 @@
-from ClassPersona import Persona
-from ClassArchivos import archivo_beneficiarios,archivo_poliza
+from modelos.ClassPersona import Persona
+from bd.ClassArchivos import archivo_beneficiarios,archivo_poliza
 class Beneficiario(Persona):
 
     def __init__(self):

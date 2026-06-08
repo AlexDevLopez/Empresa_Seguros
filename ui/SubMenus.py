@@ -1,10 +1,10 @@
-from ClassPoliza import Poliza
-from ClassBeneficiarios import Beneficiario
-from ClassPagos import Pagos
-from ClassSiniestros import Siniestro
-from ClassCliente import Cliente
-from ClassMySql import archivo_clientes,archivo_poliza,archivo_beneficiarios,archivo_pagos,archivo_siniestro
-from CRUDGenerico import Agregar_generico,Listar_generico,Modificar_generico,Borrar_generico
+from modelos.ClassPoliza import Poliza
+from modelos.ClassBeneficiarios import Beneficiario
+from modelos.ClassPagos import Pagos
+from modelos.ClassSiniestros import Siniestro
+from modelos.ClassCliente import Cliente
+from bd.ClassMySql import archivo_clientes,archivo_poliza,archivo_beneficiarios,archivo_pagos,archivo_siniestro
+from bd.CRUDGenerico import Agregar_generico,Listar_generico,Modificar_generico,Borrar_generico
 
 # Refactorización
 

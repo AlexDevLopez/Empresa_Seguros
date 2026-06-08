@@ -1,5 +1,5 @@
 from datetime import datetime
-from ClassTransaccion import Transaccion
+from modelos.ClassTransaccion import Transaccion
 class Siniestro(Transaccion):
 
     def __init__(self):

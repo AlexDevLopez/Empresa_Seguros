@@ -1,4 +1,4 @@
-from MySqlConnection import db
+from bd.MySqlConnection import db
 
 class ArchivosMySql:
     def __init__(self, tabla, encabezado):

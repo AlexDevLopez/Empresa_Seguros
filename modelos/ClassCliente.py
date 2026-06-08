@@ -1,5 +1,5 @@
-from ClassPersona import Persona
-from ClassArchivos import archivo_clientes
+from modelos.ClassPersona import Persona
+from bd.ClassArchivos import archivo_clientes
 class Cliente(Persona):
 
     def __init__(self):

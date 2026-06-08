@@ -1,4 +1,4 @@
-from SubMenus import menu_Clientes,menu_Poliza,menu_Beneficiarios,menu_Pagos,menu_Siniestros
+from ui.SubMenus import menu_Clientes,menu_Poliza,menu_Beneficiarios,menu_Pagos,menu_Siniestros
 
 def main():
     while True:

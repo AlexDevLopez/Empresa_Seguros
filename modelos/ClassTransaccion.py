@@ -1,5 +1,5 @@
 
-from ClassAseguradora import Aseguradora
+from modelos.ClassAseguradora import Aseguradora
 from abc import abstractmethod
 class Transaccion(Aseguradora):
 
