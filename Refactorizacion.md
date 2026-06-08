@@ -183,7 +183,7 @@ class ConexionMySQL:
         except mysql.connector.Error as e:
             conex.rollback()
         finally:
-            cursor.close()
+            cursor.close()2
             conex.close()
 
 class ArchivosMySql:

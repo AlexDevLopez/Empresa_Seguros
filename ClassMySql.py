@@ -41,8 +41,7 @@ class ArchivosMySql:
             sql = f"UPDATE {self.tabla} SET {', '.join(set_clausulas)} WHERE ID = %s"
             parametros = tuple(valores) + (id_real,)
             
-            db.ejecutar(sql, parametros)
-            return True
+            return db.ejecutar(sql, parametros)
         else:
             print("Índice fuera de rango")
             return False
@@ -53,8 +52,7 @@ class ArchivosMySql:
             id_real = datos[indice].split(",")[0]
 
             sql = f"DELETE FROM {self.tabla} WHERE ID = %s"
-            db.ejecutar(sql, (id_real,))
-            return True
+            return db.ejecutar(sql, (id_real,))
         else:
             print("Índice fuera de rango")
             return False

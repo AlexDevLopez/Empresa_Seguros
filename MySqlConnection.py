@@ -23,9 +23,14 @@ class ConexionMySQL:
         try:
             cursor.execute(sql, parametros)
             conex.commit()
+            return True
         except mysql.connector.Error as e:
-            print(f"Error en la base de datos: {e}")
+            if e.errno == 1451:
+                print("No se puede eliminar: tiene registros asociados en otra tabla.")
+            else:
+                print(f"Error en la base de datos: {e}")
             conex.rollback()
+            return False
         finally:
             cursor.close()
             conex.close()
@@ -45,5 +50,5 @@ class ConexionMySQL:
             cursor.close()
             conex.close()
 
-# Instancia global para usar en todo el proyecto
+
 db = ConexionMySQL()
