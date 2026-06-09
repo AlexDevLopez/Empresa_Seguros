@@ -3,7 +3,6 @@ from modelos.ClassAseguradora import Aseguradora
 class Poliza(Aseguradora):
 
     def __init__(self):
-        self.id = 0
         self.numero_poliza = 0
         self.fecha_inicio = ""
         self.fecha_fin = ""
@@ -14,7 +13,6 @@ class Poliza(Aseguradora):
         self.id_cliente = 0
 
     def capturardatos(self):
-        self.id += 1 
         self.numero_poliza = int(input("Número de  Póliza: "))
         self.fecha_inicio = datetime.strptime(input("Fecha de Inicio (DD/MM/YYYY): "), "%d/%m/%Y")
         self.fecha_fin = datetime.strptime(input("Fecha de Fin (DD/MM/YYYY): "), "%d/%m/%Y")

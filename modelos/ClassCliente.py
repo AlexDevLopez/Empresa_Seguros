@@ -3,7 +3,6 @@ from bd.ClassArchivos import archivo_clientes
 class Cliente(Persona):
 
     def __init__(self):
-        self.id = 0
         super().__init__()
         self.sexo = ""
         self.CURP = ""
@@ -14,9 +13,14 @@ class Cliente(Persona):
         
 
     def capturardatos(self):
-        self.id += 1
         super().capturardatos()
-        self.sexo = input("Sexo: ")
+        while True:
+            self.sexo = input("Sexo (M/F): ").upper()
+            if self.sexo == "M" or self.sexo == "F":
+                break
+            else:
+                print("Error: Debe ingresar M o F")
+
         self.CURP = input("Curp: ")
         while True:
             listacliente = archivo_clientes.leerDatos()
@@ -32,7 +36,11 @@ class Cliente(Persona):
         while len(self.telefono) != 10:
             print("Error: El telefono debe tener 10 digitos")
             self.telefono = (input("Telefono: "))
-        self.correo = input("Correo: ")
+        while True:
+            self.correo = input("Correo: ")
+            if "@" in self.correo and "." in self.correo.split("@")[-1]:
+                break
+            print("Error: Correo inválido. Debe contener @ y un dominio (ej: usuario@mail.com)")
         self.ocupacion = input("Ocupacion: ")
         while True:
             try:

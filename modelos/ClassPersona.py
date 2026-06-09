@@ -16,12 +16,3 @@ class Persona(Aseguradora, ABC):
     def devolverdatos(self):
         return f"{self.nombre}, {self.apellidos}, {self.fecha_nacimiento}" 
     
-
-def agregar_persona():
-    pass
-def borrar_persona():
-    pass
-def modificar_persona():
-    pass
-def listar_persona():
-    pass

@@ -3,7 +3,6 @@ from modelos.ClassTransaccion import Transaccion
 class Siniestro(Transaccion):
 
     def __init__(self):
-        self.id = 0
         self.fecha_reporte = ""
         self.fecha_ocurrencia = ""
         self.tipo_siniestro = ""
@@ -13,7 +12,6 @@ class Siniestro(Transaccion):
         self.poliza = None
     
     def capturardatos(self):
-        self.id += 1 
         self.fecha_reporte = datetime.strptime(input("Fecha del Reporte (DD/MM/YYYY): "), "%d/%m/%Y")
         self.fecha_ocurrencia = datetime.strptime(input("Fecha de Ocurrencia (DD/MM/YYYY): "), "%d/%m/%Y")
         while self.fecha_ocurrencia > self.fecha_reporte:
@@ -29,7 +27,18 @@ class Siniestro(Transaccion):
         while self.monto_aprobado > self.monto_reclamado:
             print("Error: El monto aprobado debe ser menor o igual al reclamado")
             self.monto_aprobado = float(input("Monto Aprobado: "))
-        self.estatus_siniestro = input("Estatus: ")
+        while True:
+            print("Estatus del siniestro:")
+            print("  1. Pendiente")
+            print("  2. En Revisión")
+            print("  3. Aprobado")
+            print("  4. Rechazado")
+            opcion_estatus = input("Seleccione (1-4): ")
+            estatus_opciones = {"1": "Pendiente", "2": "En Revision", "3": "Aprobado", "4": "Rechazado"}
+            if opcion_estatus in estatus_opciones:
+                self.estatus_siniestro = estatus_opciones[opcion_estatus]
+                break
+            print("Error: Seleccione una opción válida (1-4)")
         self.id_poliza = int(input("¿A qué número de póliza pertenece?"))
 
     def devolverdatos(self):

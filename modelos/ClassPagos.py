@@ -3,7 +3,6 @@ from datetime import datetime
 class Pagos(Transaccion):
 
     def __init__(self):
-        self.id = 0
         self.fecha_pago = ""
         self.monto_pagado = 0
         self.metodo_pago = ""
@@ -11,7 +10,6 @@ class Pagos(Transaccion):
         self.id_poliza = 0
 
     def capturardatos(self):
-        self.id += 1 
         self.fecha_pago = datetime.strptime(input("Fecha del Pago (DD/MM/YYYY): "), "%d/%m/%Y")
         self.monto_pagado = int(input("Monto Pagado: "))
         self.metodo_pago = input("Método de Pago: ")

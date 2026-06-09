@@ -53,6 +53,4 @@ def Borrar_generico(archivo, nombre):
         except Exception as e:
             print(f"Error inesperado: {e}")   
             return False 
-    else:
-        pass  
     

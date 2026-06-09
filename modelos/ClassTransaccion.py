@@ -4,8 +4,7 @@ from abc import abstractmethod
 class Transaccion(Aseguradora):
 
     def __init__(self):
-        self.id = 0
-        self.poliza = None
+        pass
         
     @abstractmethod
     def procesar(self):

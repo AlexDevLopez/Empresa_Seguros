@@ -3,14 +3,12 @@ from bd.ClassArchivos import archivo_beneficiarios,archivo_poliza
 class Beneficiario(Persona):
 
     def __init__(self):
-        self.id = 0
         super().__init__()
         self.parentesco = ""
         self.porcentaje_asignado = 0
         self.id_poliza = None
 
     def capturardatos(self):
-        self.id += 1
         super().capturardatos()
         self.parentesco = input("Parentesco: ")
         while True:

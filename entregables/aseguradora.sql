@@ -7,7 +7,7 @@
         nombre VARCHAR(50) NOT NULL,
         apellidos VARCHAR(80) NOT NULL,
         fecha_nacimiento DATE,
-        sexo VARCHAR(10),
+        sexo ENUM('M','F'),
         curp VARCHAR(18) UNIQUE,
         telefono VARCHAR(10),
         correo VARCHAR(100) UNIQUE,
@@ -56,7 +56,7 @@
         tipo_siniestro VARCHAR(50),
         monto_reclamado DECIMAL(10,2),
         monto_aprobado DECIMAL(10,2),
-        estatus_siniestro VARCHAR(20),
+        estatus_siniestro ENUM('Pendiente','En Revision','Aprobado','Rechazado'),
         poliza_id INT,
         FOREIGN KEY (poliza_id) REFERENCES Polizas(id)
     );
