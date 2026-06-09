@@ -26,8 +26,8 @@ errores = 0
 print("\n--- 1. CLIENTES ---")
 
 # Agregar
-archivo_clientes.agregar("Carlos, Ramirez Gonzalez, 1985-03-15, Masculino, RAGC850315HDFRNS09, 2228451234, carlos@email.com, Ingeniero, 25000")
-archivo_clientes.agregar("Ana, Lopez Torres, 1990-07-22, Femenino, LOTA900722MDFPNX01, 2229876543, ana@email.com, Doctora, 35000")
+archivo_clientes.agregar("Carlos, Ramirez Gonzalez, 1985-03-15, M, RAGC850315HDFRNS09, 2228451234, carlos@email.com, Ingeniero, 25000")
+archivo_clientes.agregar("Ana, Lopez Torres, 1990-07-22, F, LOTA900722MDFPNX01, 2229876543, ana@email.com, Doctora, 35000")
 datos = archivo_clientes.leerDatos()
 if len(datos) == 2:
     print("  [OK] Agregar: 2 clientes insertados")
@@ -44,7 +44,7 @@ else:
     errores += 1
 
 # Modificar (cambiar Carlos -> Pedro)
-exito = archivo_clientes.modificar(0, "Pedro, Ramirez Gonzalez, 1985-03-15, Masculino, RAGC850315HDFRNS09, 2228451234, pedro@email.com, Arquitecto, 30000")
+exito = archivo_clientes.modificar(0, "Pedro, Ramirez Gonzalez, 1985-03-15, M, RAGC850315HDFRNS09, 2228451234, pedro@email.com, Arquitecto, 30000")
 datos = archivo_clientes.leerDatos()
 if exito and "Pedro" in datos[0]:
     print("  [OK] Modificar: Carlos -> Pedro")
@@ -180,7 +180,7 @@ else:
 # ========== 5. SINIESTROS ==========
 print("\n--- 5. SINIESTROS ---")
 
-archivo_siniestro.agregar(f"2025-03-01, 2025-02-28, Robo, 50000.00, 45000.00, En revision, {id_poliza}")
+archivo_siniestro.agregar(f"2025-03-01, 2025-02-28, Robo, 50000.00, 45000.00, En Revision, {id_poliza}")
 archivo_siniestro.agregar(f"2025-04-10, 2025-04-08, Accidente, 100000.00, 0.00, Pendiente, {id_poliza}")
 datos_s = archivo_siniestro.leerDatos()
 if len(datos_s) == 2:

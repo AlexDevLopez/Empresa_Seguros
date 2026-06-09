@@ -21,14 +21,14 @@ class Cliente(Persona):
             else:
                 print("Error: Debe ingresar M o F")
 
-        self.CURP = input("Curp: ")
+        self.CURP = input("Curp: ").upper()
         while True:
             listacliente = archivo_clientes.leerDatos()
             for renglon in listacliente:
                 datos = renglon.split(",")
                 if datos[5].strip() == self.CURP:
                     print("Error: La CURP ya existe")
-                    self.CURP = input("Curp: ")
+                    self.CURP = input("Curp: ").upper()
                     break
             else:
                 break

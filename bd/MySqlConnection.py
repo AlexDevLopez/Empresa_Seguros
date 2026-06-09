@@ -17,7 +17,6 @@ class ConexionMySQL:
         )
 
     def ejecutar(self, sql, parametros=None):
-        """Ejecuta INSERT, UPDATE, DELETE (modifica datos)"""
         conex = self.conectar()
         cursor = conex.cursor()
         try:
@@ -36,7 +35,6 @@ class ConexionMySQL:
             conex.close()
 
     def consultar(self, sql, parametros=None):
-        """Ejecuta SELECT (lee datos). Retorna lista de tuplas."""
         conex = self.conectar()
         cursor = conex.cursor()
         try:
